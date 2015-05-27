@@ -8,7 +8,7 @@ import javax.swing.*;
  */
 public class Tegel extends JPanel
 {
-    private int x, y;
+    int x, y;
     public Tegel(int x, int y)
     {
         this.x = x;

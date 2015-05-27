@@ -12,36 +12,44 @@ public class Spel
 {
     public static void main(String[] args)
     {
-        int height = 1000;
-        int width = 1000;
+        int width = 100;
+        int height = 100;
+        
+        int widthFixed = width / 20;
+        int heightFixed = height / 20;
         
         JFrame frame = new JFrame();
-        JPanel panel=new JPanel();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(width,height);
         frame.setPreferredSize(new Dimension(width, height));
         frame.pack();
         frame.setTitle("Doolhof");
         
-        Tegel[][] grid = vormTegelGrid(width, height);
-        frame.add(grid);                                            //geen suitable method (bijv. draw) found voor add -  maar die is er wel?
+        Speler speler = new Speler(0,0);
         
-        Speler speler = new Speler(10,10);
+        Tegel[][] grid = vormTegelGrid(widthFixed, heightFixed);
+        
         
         frame.add(speler);                                          //wel een suitable method found (draw) maar geen resultaat?
-        
-        
-        frame.add(panel);
         frame.repaint();
         frame.validate();
-        frame.setVisible(true);  
-        
+        frame.setVisible(true);       
     }
     
-    public static Tegel[][] vormTegelGrid(int height, int width)
+    public static Tegel[][] vormTegelGrid(int widthFixed, int heightFixed)
     {
-        int x = width / 20;
-        int y = height / 20;
-        Tegel[][] grid = new Tegel[x][y];
+        Tegel[][] grid = new Tegel[widthFixed][heightFixed];
+        for (int i = 0; i < widthFixed; i++)
+        {
+            for (int j = 0; j < heightFixed; j++)
+            {
+                System.out.println("x: " + i + ", y: " + j);
+                //grid[i][j].x = i; <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------deze gaat fout: .x bestaat niet (nullpointer exception)
+                //grid[i][j].y = j;
+                
+                //System.out.println("Grid[" + i + "][" + j + "].x = " + grid[i][j].x);
+            }
+        }
         return grid;
     }
     
